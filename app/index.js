@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types');
 require('./index.css');
 
 class App extends React.Component {
@@ -27,6 +28,11 @@ class App extends React.Component {
 			</div>
 		)
 	}
+}
+
+Badge.propTypes = {
+	name: PropTypes.string.isRequired,
+	male: PropTypes.bool.isRequired
 }
 
 ReactDOM.render(
