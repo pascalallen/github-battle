@@ -6,6 +6,7 @@ class Popular extends React.Component{
         this.state = {
             selectedLanguage: 'All'
         };
+        this.updateLanguage = this.updateLanguage.bind(this); // this prevents from getting an undefined error by binding the this keyword to updateLanguage
     }
     updateLanguage (language) {
         this.setState(function(){
@@ -20,11 +21,11 @@ class Popular extends React.Component{
             <ul className='languages'>
                 {languages.map(function(language){
                     return (
-                        <li key={language}>
+                        <li style={language === this.state.selectedLanguage ? {color: '#d0021b'}: null} onClick={this.updateLanguage.bind(null, language)} key={language}>
                             {language}
                         </li>
                     )
-                })}
+                }, this)} // pass in 'this' so that map knows what you are referring to
             </ul>
         )
     }
